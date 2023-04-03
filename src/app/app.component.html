@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="ready">
+            <table>
+              <thead>
+                <th class="ms-3">ID</th>
+                <th class="ms-3">Desc</th>
+                <th class="ms-3">ACTION</th>
+                <th class="ms-3">ACTION</th>
+              </thead>
+            <tbody  *ngFor="let data of x; let i = index">
+              <td>{{i+1}}</td>
+                  
+              <td class="ms-3">  <span  *ngIf="this.hidden==false"> {{data.value}} </span> 
+                <span *ngIf="this.hidden==true && editID==i">
+                  <input type="text" value="{{data.value}}">
+                </span>
+              </td>
+        
+                  
+                   <td (click)="delete(data,i)"><button *ngIf="this.hidden==false">Delete</button></td>
+                  <td (click)="edit(data,i)"><button *ngIf="this.hidden==false">Edit</button></td>
+                  <td (click)="save(data,i)"><Button *ngIf="this.hidden==true">Save</Button></td>  
+                 </tbody>
+            </table>
+          </div>
+          <div class="row mt-5">
+
+            <form [formGroup]="getvalue" (ngSubmit)="onSubmit()">
+              <textarea formControlName="value"></textarea>
+              <button class="btn btn-primary">Submit</button>
+             
+            </form>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
